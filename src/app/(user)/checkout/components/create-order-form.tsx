@@ -60,7 +60,7 @@ export const CreateOrderForm: FC<CreateOrderForm> = ({
           checkout
         </AppButton>
         <Link href={`/cart`}>
-          <AppButton>to cart</AppButton>
+          <AppButton>to bag</AppButton>
         </Link>
       </div>
     </form>

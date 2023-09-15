@@ -20,7 +20,7 @@ export const BreadcrumbsShort: FC<BreadcrumbsShortProps> = ({
         onClick={() => router.back()}
         className="hover:text-app-secondary_hover uppercase"
       >
-        back
+        {`< back`}
       </button>
       <span className="cursor-default">&nbsp;/&nbsp;</span>
       <Link href={"/"} className="hover:text-app-secondary_hover">

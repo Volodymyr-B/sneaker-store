@@ -1,12 +1,14 @@
 "use client";
 
 import { FC, useState } from "react";
-import toast from "react-hot-toast";
+import Link from "next/link";
 import type { Session } from "next-auth";
+import toast from "react-hot-toast";
 import useCart from "@/hooks/global/use-cart";
 import { CommentForm } from "@/app/shop/[id]/components/comment-form";
 import { CommentsList } from "@/app/shop/[id]/components/comments-list";
 import { QuantitiesList } from "@/app/shop/[id]/components/quantities-list";
+import { BreadcrumbsShort } from "@/app/shop/[id]/components/BreadcrumbsShort";
 import { DiscountedPrice } from "@/components/common/discounted-price";
 import { AppButton } from "@/components/UI/app-button";
 import { AppImage } from "@/components/common/app-image";
@@ -42,6 +44,7 @@ export const DetailedProduct: FC<DetailedProductProps> = ({
         lg:items-start lg:flex-row gap-8"
     >
       <div className="flex-1 w-full">
+        <BreadcrumbsShort productName={product.name} />
         <AppImage
           src={product.cover}
           alt={product.name}
@@ -71,8 +74,15 @@ export const DetailedProduct: FC<DetailedProductProps> = ({
         ) : (
           <p>No comments yet</p>
         )}
-        {session?.user && (
+        {session?.user ? (
           <CommentForm productId={product.id} user={session.user} />
+        ) : (
+          <Link
+            href={"/auth"}
+            className="hover:text-app-secondary_hover w-fit underline underline-offset-4"
+          >
+            <p>Login to leave a comment</p>
+          </Link>
         )}
       </div>
     </div>

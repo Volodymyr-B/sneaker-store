@@ -32,10 +32,15 @@ export const CommentForm: FC<CommentFormProps> = ({ productId, user }) => {
   );
 
   const onSubmit = handleSubmit(async (data) => {
+    if (!user.name || !user.email) {
+      return toast.error("some user info is missing, please relogin", {
+        id: "unique",
+      });
+    }
     const commentVal = {
       productId,
-      userEmail: user.email!,
-      userName: user.name!,
+      userEmail: user.email,
+      userName: user.name,
       body: data.body,
     };
     try {

@@ -151,6 +151,7 @@ export default RootLayout;
 // breadcrump for current url +++
 // add name/mail to order for registered users +++
 // redirect from profile if not user +++
+// back btn at detailed product +++
 
 // change loading from isMutating to isSubmitting???(seems no) ---
 // React-Query and off refetch on CRUD?? (no for now) ---
@@ -168,7 +169,6 @@ export default RootLayout;
 //  make userByEmailShort
 // fix sport tennis async
 
-// back btn at detailed product
 // check pasword security alert
 // fix small scroll and header shake
 // better discount in cart
