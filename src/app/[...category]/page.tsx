@@ -13,8 +13,8 @@ export const revalidate = 86400;
 export const dynamicParams = false;
 
 export const generateStaticParams = async () => {
-  const category = await CategoryAction.getAll();
-  return generateStaticNav(category);
+  const categories = await CategoryAction.getAll();
+  return generateStaticNav(categories);
 };
 
 const CategoryPage = async ({ params: { category } }: Params) => {
