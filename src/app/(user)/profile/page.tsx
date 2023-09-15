@@ -8,6 +8,7 @@ import { OrderCard } from "@/app/(user)/profile/components/order-card";
 import { PersonalInfo } from "@/app/(user)/profile/components/personal-info";
 import { NoOrdersCard } from "@/app/(user)/profile/components/no-orders-card";
 import { NavLinkList } from "@/components/common/nav-link-list";
+import { redirect } from "next/navigation";
 
 export const revalidate = 0;
 
@@ -20,9 +21,10 @@ export const generateMetadata = async () => {
 
 const ProfilePage = async () => {
   const session = await getServerSession(authOptions);
-  if (!session || !session.user || !session.user.email) return null;
+  if (!session || !session.user || !session.user.email)
+    return redirect("/auth");
   const user = await UserAction.getByEmail(session.user.email);
-  if (!user) return null;
+  if (!user) return redirect("/auth");
 
   return (
     <div className="flex flex-col md:flex-row justify-between gap-8">

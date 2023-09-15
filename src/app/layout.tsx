@@ -149,6 +149,8 @@ export default RootLayout;
 // footer mobile screen fix +++
 // info that only registered users can leave a comment +++
 // breadcrump for current url +++
+// add name/mail to order for registered users +++
+// redirect from profile if not user +++
 
 // change loading from isMutating to isSubmitting???(seems no) ---
 // React-Query and off refetch on CRUD?? (no for now) ---
@@ -166,8 +168,6 @@ export default RootLayout;
 //  make userByEmailShort
 
 // back btn at detailed product
-// add name/mail to order for registered users
 // check pasword security alert
-// redirect from profile if not user
 // fix small scroll and header shake
 // better discount in cart
