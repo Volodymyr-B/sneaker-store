@@ -11,14 +11,14 @@ export const metadata: Metadata = {
 };
 
 const CheckoutPage = async () => {
-  let userId = null;
+  let user = null;
   const session = await getServerSession(authOptions);
   if (session && session.user && session.user.email) {
     const res = await UserAction.getByEmail(session.user.email);
-    if (res) userId = res.id;
+    if (res) user = res;
   }
 
-  return <CheckoutContent userId={userId} />;
+  return <CheckoutContent user={user} />;
 };
 
 export default CheckoutPage;

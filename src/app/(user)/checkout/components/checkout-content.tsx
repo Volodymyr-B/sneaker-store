@@ -14,13 +14,13 @@ import { createOrderSchema, createOrderValues } from "@/lib/helpers/schema";
 import { CreateOrderForm } from "@/app/(user)/checkout/components/create-order-form";
 import { OrderDetails } from "@/app/(user)/checkout/components/order-details";
 import type { OrderValues } from "@/types/dto-out";
-import type { OrderFull } from "@/types/dto-in";
+import type { OrderFull, UserFull } from "@/types/dto-in";
 
 interface CheckoutContentProps {
-  userId: string | null;
+  user: UserFull | null;
 }
 
-export const CheckoutContent: FC<CheckoutContentProps> = ({ userId }) => {
+export const CheckoutContent: FC<CheckoutContentProps> = ({ user }) => {
   const isMounted = useMounted();
   const router = useRouter();
 
@@ -52,7 +52,7 @@ export const CheckoutContent: FC<CheckoutContentProps> = ({ userId }) => {
     try {
       const orderVal = {
         ...data,
-        buyer: userId,
+        buyer: user?.id || null,
         totalPrice: totalPrice(),
         orderItem: items.map((prod) => ({
           productName: prod.name,
@@ -76,6 +76,8 @@ export const CheckoutContent: FC<CheckoutContentProps> = ({ userId }) => {
   return (
     <div className="flex gap-8 justify-center flex-col-reverse md:flex-row">
       <CreateOrderForm
+        userName={user?.name}
+        userEmail={user?.eMail}
         isLoading={isMutating}
         errors={errors}
         onCreateOrder={onCreateOrder}

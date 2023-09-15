@@ -6,6 +6,8 @@ import { AppButton } from "@/components/UI/app-button";
 import { FormInput } from "@/components/UI/form-input";
 
 interface CreateOrderForm {
+  userName?: string;
+  userEmail?: string;
   register: UseFormRegister<createOrderValues>;
   errors: FieldErrors<createOrderValues>;
   onCreateOrder: () => Promise<void>;
@@ -13,6 +15,8 @@ interface CreateOrderForm {
 }
 
 export const CreateOrderForm: FC<CreateOrderForm> = ({
+  userName,
+  userEmail,
   register,
   errors,
   onCreateOrder,
@@ -23,6 +27,7 @@ export const CreateOrderForm: FC<CreateOrderForm> = ({
       <h5 className="font-bold">Contact Information</h5>
       <div className="md:flex gap-2">
         <FormInput
+          defaultValue={userName}
           placeholder="first name"
           {...register("firstName")}
           error={errors.firstName?.message}
@@ -45,6 +50,7 @@ export const CreateOrderForm: FC<CreateOrderForm> = ({
         error={errors.phone?.message}
       />
       <FormInput
+        defaultValue={userEmail}
         placeholder="email"
         {...register("email")}
         error={errors.email?.message}
