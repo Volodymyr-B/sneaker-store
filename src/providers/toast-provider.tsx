@@ -7,13 +7,15 @@ const ToastProvider = () => {
         position="bottom-center"
         containerStyle={{ left: 0, right: 0, bottom: 0 }}
         toastOptions={{
-          icon: "",
+          icon: null,
           style: {
+            background: "rgb(50,100,168)",
             padding: "16px 0",
             width: "100vw",
             maxWidth: "100vw",
             borderRadius: "0px",
             color: "white",
+            textAlign: "center",
           },
           success: {
             style: {
@@ -24,6 +26,7 @@ const ToastProvider = () => {
             duration: 2000,
             style: {
               background: "red",
+              width: "100vw",
             },
           },
         }}

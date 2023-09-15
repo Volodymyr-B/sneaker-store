@@ -28,7 +28,7 @@ export const CategoryBarMobile: FC<CategoryBarMobileProps> = ({
           <ul>
             {categories.map((category) => (
               <li
-                className="flex items-center justify-between w-full"
+                className="flex items-center justify-between w-full mb-2"
                 onClick={() => setLayerOne(category.name)}
                 key={category.id}
               >
@@ -54,7 +54,7 @@ export const CategoryBarMobile: FC<CategoryBarMobileProps> = ({
               .find((category) => category.name === layerOne)
               ?.types.map((type) => (
                 <li
-                  className="flex items-center justify-between w-full"
+                  className="flex items-center justify-between w-full mb-2"
                   onClick={() => setLayerTwo(type.name)}
                   key={type.id}
                 >
@@ -82,7 +82,7 @@ export const CategoryBarMobile: FC<CategoryBarMobileProps> = ({
               ?.variants.map((variant) => (
                 <li key={variant.id}>
                   <Link
-                    className="flex items-center justify-between w-full"
+                    className="flex items-center justify-between w-full mb-2"
                     onClick={onClose}
                     href={`/${layerOne}/${layerTwo}/${variant.name}`}
                   >

@@ -20,6 +20,7 @@ export const SearchBarMobile = () => {
   return (
     <div className="relative w-full">
       <SearchInput
+        autoFocus
         value={search}
         onChange={inputHandler}
         reset={resetSearch}

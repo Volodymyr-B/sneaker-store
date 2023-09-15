@@ -11,7 +11,7 @@ const font = Quicksand({ subsets: ["latin"], weight: "500" });
 
 export const metadata: Metadata = {
   title: "Sneaker Store",
-  description: "e-shop fully functional web store",
+  description: "e-commerce fully functional web app",
 };
 
 const RootLayout = async ({ children }: { children: React.ReactNode }) => {
@@ -139,6 +139,16 @@ export default RootLayout;
 // remove comments from components and actions +++
 // add unexpected error handling in actions +++
 // upload images to DB +++
+// reCheck all routes to server and DB calls( check response errors also) +++
+// delete unused constants and temp +++
+// check all API calls and routes for URL path, and rewrite them for deploy +++
+
+// fix adaptive paddings / modal shadow and btn padding +++
+// paypal neutral toast +++
+// disable scroll on global modal(add focus to search when open) +++
+// footer mobile screen fix +++
+// info that only registered users can leave a comment +++
+// breadcrump for current url +++
 
 // change loading from isMutating to isSubmitting???(seems no) ---
 // React-Query and off refetch on CRUD?? (no for now) ---
@@ -147,12 +157,17 @@ export default RootLayout;
 // add scroll to select (nope) ---
 // check MAth.ceil and make price decimal/float or make fn for calc (go with int) ---
 // make cart synchronized with DB or turn off persist ++-
-// reCheck all routes to server and DB calls( check response errors also) ++-
 // remove next auth client provider and useSession from DetailedPage (for now no(nav-bar))
-// check all API calls and routes for URL path, and rewrite them for deploy
 // mb make some quantity check when creating order?
 // add state to searchResult or not
-// delete unused constants and temp ++-
 // pagination
 // framer-motion
 // change disabled btn color
+//  make userByEmailShort
+
+// back btn at detailed product
+// add name/mail to order for registered users
+// check pasword security alert
+// redirect from profile if not user
+// fix small scroll and header shake
+// better discount in cart

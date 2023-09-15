@@ -11,7 +11,7 @@ interface SummaryProps {
 
 export const Summary: FC<SummaryProps> = ({ totalPrice, totalDiscount }) => {
   const paymentHandler = () => {
-    toast.success("Work in progress, this button dont work yet", {
+    toast("Work in progress, this button dont work yet", {
       id: "unique",
     });
   };
