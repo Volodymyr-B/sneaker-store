@@ -30,7 +30,7 @@ const ProfilePage = async () => {
     <div className="flex flex-col md:flex-row justify-between gap-8">
       <div className="md:w-2/3">
         <div className="flex justify-between">
-          <h3 className="md:text-3xl font-bold">Hello {user.name}! 👋✋</h3>
+          <h3 className="md:text-3xl font-bold">Hello {user.name}! 👋</h3>
           <SignOutBtn />
         </div>
         {!!user.orders.length ? (

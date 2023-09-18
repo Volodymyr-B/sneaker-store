@@ -3,11 +3,9 @@ import { FC } from "react";
 interface DiscountedPriceProps {
   discount: number;
   price: number;
-  shortView?: boolean;
 }
 
 export const DiscountedPrice: FC<DiscountedPriceProps> = ({
-  shortView,
   discount,
   price,
 }) => {
@@ -16,7 +14,7 @@ export const DiscountedPrice: FC<DiscountedPriceProps> = ({
       <b className="text-red-500">
         {Math.ceil(price * (1 - discount / 100))} $
       </b>
-      {!shortView && <span className="line-through text-sm">{price} $</span>}
+      <span className="hidden sm:inline line-through text-sm">{price} $</span>
     </span>
   );
 };

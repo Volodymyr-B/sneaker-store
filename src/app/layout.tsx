@@ -152,6 +152,8 @@ export default RootLayout;
 // add name/mail to order for registered users +++
 // redirect from profile if not user +++
 // back btn at detailed product +++
+// better discount in cart
+// remove 1 emoji from profile
 
 // change loading from isMutating to isSubmitting???(seems no) ---
 // React-Query and off refetch on CRUD?? (no for now) ---
@@ -171,4 +173,5 @@ export default RootLayout;
 
 // check pasword security alert
 // fix small scroll and header shake
-// better discount in cart
+// add comment to order form
+// add size charts(EU/ENG)

@@ -44,7 +44,6 @@ export const CartCard: FC<CartCardProps> = ({
             <DiscountedPrice
               discount={product.discount}
               price={product.price * product.pickedAmount}
-              shortView
             />
           ) : (
             <p className="text-center">

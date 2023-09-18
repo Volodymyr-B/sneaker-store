@@ -21,7 +21,6 @@ export const CheckoutCard: FC<CheckoutCardProps> = ({ product }) => {
           <DiscountedPrice
             discount={product.discount}
             price={product.price * product.pickedAmount}
-            shortView
           />
         ) : (
           <span>{product.price * product.pickedAmount} $</span>
