@@ -16,6 +16,7 @@
 
 html,
 body {
+  -webkit-tap-highlight-color: transparent;
   height: 100%;
 }
 

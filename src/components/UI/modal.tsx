@@ -1,6 +1,7 @@
 "use client";
 
 import { FC, PropsWithChildren, useEffect } from "react";
+import { motion } from "framer-motion";
 import { GrClose } from "react-icons/gr";
 import { AppIcon } from "@/components/UI/app-icon";
 import { Container } from "@/components/common/container";
@@ -23,9 +24,11 @@ export const Modal: FC<PropsWithChildren<ModalProps>> = ({
   return (
     <div className="fixed inset-0 z-30">
       <div onClick={onClose} className="w-full h-full backdrop-blur-sm" />
-      <div
-        className="bg-white absolute top-0 right-0 min-w-[320px]
-      h-full overflow-y-scroll drop-shadow-lg"
+      <motion.div
+        className="bg-white absolute top-0 right-0 
+          h-full overflow-y-scroll drop-shadow-lg"
+        initial={{ width: "60px" }}
+        animate={{ width: "auto", minWidth: "320px" }}
       >
         <Container>
           <div className="flex flex-col gap-2">
@@ -35,7 +38,7 @@ export const Modal: FC<PropsWithChildren<ModalProps>> = ({
             <div>{children}</div>
           </div>
         </Container>
-      </div>
+      </motion.div>
     </div>
   );
 };

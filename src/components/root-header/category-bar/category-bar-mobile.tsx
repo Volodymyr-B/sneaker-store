@@ -5,13 +5,15 @@ import Link from "next/link";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 import { useModal } from "@/hooks/global/use-modal";
 import { Separator } from "@/components/common/separator";
+import { MotionUl } from "@/components/common/motion-ul";
+import { MotionLi } from "@/components/common/motion-li";
+import { CategoryListItemMobile } from "@/components/root-header/category-bar/category-list-item-mobile";
 import type { CategoryFull } from "@/types/dto-in";
 
 interface CategoryBarMobileProps {
   categories: CategoryFull[];
 }
 
-// temporary solution before installing some animation lib --------//
 export const CategoryBarMobile: FC<CategoryBarMobileProps> = ({
   categories,
 }) => {
@@ -25,18 +27,15 @@ export const CategoryBarMobile: FC<CategoryBarMobileProps> = ({
         <div>
           <h5>categories</h5>
           <Separator />
-          <ul>
+          <MotionUl key="first">
             {categories.map((category) => (
-              <li
-                className="flex items-center justify-between w-full mb-2"
-                onClick={() => setLayerOne(category.name)}
+              <CategoryListItemMobile
                 key={category.id}
-              >
-                <span>{category.name}</span>
-                <IoIosArrowForward />
-              </li>
+                action={setLayerOne}
+                itemTitle={category.name}
+              />
             ))}
-          </ul>
+          </MotionUl>
         </div>
       )}
       {layerOne && !layerTwo && (
@@ -49,20 +48,17 @@ export const CategoryBarMobile: FC<CategoryBarMobileProps> = ({
             <IoIosArrowBack />
           </button>
           <Separator />
-          <ul>
+          <MotionUl key="second">
             {categories
               .find((category) => category.name === layerOne)
               ?.types.map((type) => (
-                <li
-                  className="flex items-center justify-between w-full mb-2"
-                  onClick={() => setLayerTwo(type.name)}
+                <CategoryListItemMobile
                   key={type.id}
-                >
-                  <span>{type.name}</span>
-                  <IoIosArrowForward />
-                </li>
+                  action={setLayerTwo}
+                  itemTitle={type.name}
+                />
               ))}
-          </ul>
+          </MotionUl>
         </div>
       )}
       {layerOne && layerTwo && (
@@ -75,12 +71,12 @@ export const CategoryBarMobile: FC<CategoryBarMobileProps> = ({
             <IoIosArrowBack />
           </button>
           <Separator />
-          <ul>
+          <MotionUl key="third">
             {categories
               .find((category) => category.name === layerOne)
               ?.types.find((type) => type.name === layerTwo)
               ?.variants.map((variant) => (
-                <li key={variant.id}>
+                <MotionLi key={variant.id}>
                   <Link
                     className="flex items-center justify-between w-full mb-2"
                     onClick={onClose}
@@ -89,9 +85,9 @@ export const CategoryBarMobile: FC<CategoryBarMobileProps> = ({
                     <span>{variant.name}</span>
                     <IoIosArrowForward />
                   </Link>
-                </li>
+                </MotionLi>
               ))}
-          </ul>
+          </MotionUl>
         </div>
       )}
     </>

@@ -142,6 +142,8 @@ export default RootLayout;
 // reCheck all routes to server and DB calls( check response errors also) +++
 // delete unused constants and temp +++
 // check all API calls and routes for URL path, and rewrite them for deploy +++
+// check MAth.ceil and make price decimal/float or make fn for calc (go with int) +++
+// framer-motion +++
 
 // fix adaptive paddings / modal shadow and btn padding +++
 // paypal neutral toast +++
@@ -152,26 +154,25 @@ export default RootLayout;
 // add name/mail to order for registered users +++
 // redirect from profile if not user +++
 // back btn at detailed product +++
-// better discount in cart
-// remove 1 emoji from profile
+// better discount in cart +++
+// remove 1 emoji from profile +++
+// check pasword security alert +++
 
 // change loading from isMutating to isSubmitting???(seems no) ---
 // React-Query and off refetch on CRUD?? (no for now) ---
 // install axios(optional) (for now not needed) ---
 // make exclude FN for getUserByEmail(or not?) ---
 // add scroll to select (nope) ---
-// check MAth.ceil and make price decimal/float or make fn for calc (go with int) ---
 // make cart synchronized with DB or turn off persist ++-
 // remove next auth client provider and useSession from DetailedPage (for now no(nav-bar))
 // mb make some quantity check when creating order?
 // add state to searchResult or not
 // pagination
-// framer-motion
 // change disabled btn color
-//  make userByEmailShort
+// make userByEmailShort
 // fix sport tennis async
+// do i need prefetch???
 
-// check pasword security alert
 // fix small scroll and header shake
 // add comment to order form
 // add size charts(EU/ENG)

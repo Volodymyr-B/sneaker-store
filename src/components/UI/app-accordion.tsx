@@ -1,6 +1,7 @@
 "use client";
 
 import { FC, PropsWithChildren, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface AppAccordionProps {
   title: string;
@@ -26,7 +27,22 @@ export const AppAccordion: FC<PropsWithChildren<AppAccordionProps>> = ({
           {isActive ? "-" : "+"}
         </div>
       </button>
-      {isActive && <>{children}</>}
+      <AnimatePresence>
+        {isActive && (
+          <motion.div
+            initial="collapsed"
+            animate="open"
+            exit="collapsed"
+            variants={{
+              open: { opacity: 1, height: "auto" },
+              collapsed: { opacity: 0, height: 0 },
+            }}
+            transition={{ duration: 0.3 }}
+          >
+            {children}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };

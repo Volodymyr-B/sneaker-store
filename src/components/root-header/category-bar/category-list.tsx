@@ -5,6 +5,8 @@ import Link from "next/link";
 import { useDelayed } from "@/hooks/instance/use-delayed";
 import { PopUp } from "@/components/root-header/category-bar/pop-up";
 import { Container } from "@/components//common/container";
+import { MotionUl } from "@/components/common/motion-ul";
+import { MotionLi } from "@/components/common/motion-li";
 import type { TypeFull } from "@/types/dto-in";
 
 interface CategoryListProps {
@@ -40,9 +42,13 @@ export const CategoryList: FC<CategoryListProps> = ({ link, content }) => {
                   >
                     {type.name}
                   </Link>
-                  <ul className="flex flex-col gap-3">
+                  <MotionUl
+                    key="main-header"
+                    className="flex flex-col gap-3"
+                    animationSpeed={0.05}
+                  >
                     {type.variants.map((variant) => (
-                      <li key={variant.id}>
+                      <MotionLi key={variant.id}>
                         <Link
                           onClick={closeHandler}
                           href={`/${link}/${type.name}/${variant.name}`}
@@ -50,9 +56,9 @@ export const CategoryList: FC<CategoryListProps> = ({ link, content }) => {
                         >
                           {variant.name}
                         </Link>
-                      </li>
+                      </MotionLi>
                     ))}
-                  </ul>
+                  </MotionUl>
                 </div>
               ))}
             </div>
