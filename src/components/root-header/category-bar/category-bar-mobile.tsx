@@ -78,6 +78,7 @@ export const CategoryBarMobile: FC<CategoryBarMobileProps> = ({
               ?.variants.map((variant) => (
                 <MotionLi key={variant.id}>
                   <Link
+                    prefetch={false}
                     className="flex items-center justify-between w-full mb-2"
                     onClick={onClose}
                     href={`/${layerOne}/${layerTwo}/${variant.name}`}

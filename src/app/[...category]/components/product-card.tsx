@@ -11,7 +11,7 @@ interface ProductCardProps {
 export const ProductCard: FC<ProductCardProps> = ({ product }) => {
   return (
     <>
-      <Link href={`/shop/${product.id}`}>
+      <Link prefetch={false} href={`/shop/${product.id}`}>
         <article className="flex flex-col gap-1">
           <AppImage src={product.cover} alt={product.name} />
           <h5>{product.name}</h5>

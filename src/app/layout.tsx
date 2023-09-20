@@ -143,6 +143,8 @@ export default RootLayout;
 // delete unused constants and temp +++
 // check all API calls and routes for URL path, and rewrite them for deploy +++
 // check MAth.ceil and make price decimal/float or make fn for calc (go with int) +++
+// fix sport tennis async +++
+// do i need prefetch??? (disable in categories) +++
 // framer-motion +++
 
 // fix adaptive paddings / modal shadow and btn padding +++
@@ -170,8 +172,6 @@ export default RootLayout;
 // pagination
 // change disabled btn color
 // make userByEmailShort
-// fix sport tennis async
-// do i need prefetch???
 
 // fix small scroll and header shake
 // add comment to order form

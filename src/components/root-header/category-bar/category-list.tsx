@@ -20,6 +20,7 @@ export const CategoryList: FC<CategoryListProps> = ({ link, content }) => {
   return (
     <div onMouseEnter={openHandler} onMouseLeave={closeHandler}>
       <Link
+        prefetch={false}
         href={`/${link}`}
         onClick={closeHandler}
         className="flex items-center relative h-main_header px-4"
@@ -36,6 +37,7 @@ export const CategoryList: FC<CategoryListProps> = ({ link, content }) => {
               {content.map((type) => (
                 <div key={type.id} className="flex flex-col gap-5">
                   <Link
+                    prefetch={false}
                     onClick={closeHandler}
                     href={`/${link}/${type.name}`}
                     className="font-bold"
@@ -50,6 +52,7 @@ export const CategoryList: FC<CategoryListProps> = ({ link, content }) => {
                     {type.variants.map((variant) => (
                       <MotionLi key={variant.id}>
                         <Link
+                          prefetch={false}
                           onClick={closeHandler}
                           href={`/${link}/${type.name}/${variant.name}`}
                           className="hover:font-bold"
