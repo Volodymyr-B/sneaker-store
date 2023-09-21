@@ -21,8 +21,8 @@ export const AppAccordion: FC<PropsWithChildren<AppAccordionProps>> = ({
       >
         <h6>{title}</h6>
         <div
-          className="w-7 h-7 bg-app-primary_action hover:bg-app-primary_hover rounded-full text-2xl 
-        flex justify-center items-center"
+          className="w-7 h-7 bg-app-primary_action lg:hover:bg-app-primary_hover 
+        rounded-full text-2xl flex justify-center items-center"
         >
           {isActive ? "-" : "+"}
         </div>

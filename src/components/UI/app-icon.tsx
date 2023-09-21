@@ -13,8 +13,9 @@ export const AppIcon: FC<PropsWithChildren<AppIconProps>> = ({
   return (
     <button
       onClick={action}
-      className="w-9 h-9 bg-app-primary_action hover:bg-app-primary_hover
-        rounded-full flex justify-center items-center relative transition-all duration-300"
+      className="w-9 h-9 flex justify-center items-center relative rounded-full
+       bg-app-primary_action lg:hover:bg-app-primary_hover active:bg-app-primary_hover
+       transition-all duration-300"
     >
       <div className="text-app-secondary_action text-xl">{icon}</div>
       {children}

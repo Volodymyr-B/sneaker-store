@@ -19,10 +19,16 @@ export const AuthSmallDevice = () => {
   return (
     <div className="flex flex-col w-full">
       <div className="flex justify-around">
-        <button onClick={leftHandler}>
+        <button
+          className="active:text-app-primary_action"
+          onClick={leftHandler}
+        >
           <h5>sign-in</h5>
         </button>
-        <button onClick={rightHandler}>
+        <button
+          className="active:text-app-primary_action"
+          onClick={rightHandler}
+        >
           <h5>sign-up</h5>
         </button>
       </div>

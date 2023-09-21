@@ -12,7 +12,7 @@ const RootHeader = async () => {
   const categories = await CategoryAction.getAll();
 
   return (
-    <div className="px-4 lg:px-8 z-20 bg-app-primary absolute hover:fixed w-full">
+    <div className="px-4 lg:px-8 z-20 bg-app-primary absolute lg:hover:fixed w-full">
       <header className="flex items-center justify-center lg:justify-between h-main_header">
         <div className="flex lg:hidden gap-2">
           <ModalButton icon={<AiOutlineMenu />}>

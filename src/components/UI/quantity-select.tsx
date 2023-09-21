@@ -48,7 +48,7 @@ export const QuantitySelect: FC<AppSelectProps> = ({
                 key={i}
                 onClick={() => onChangeVal(i + 1)}
                 className={cn(
-                  "list-none outline outline-1 cursor-pointer bg-white hover:bg-app-secondary px-3",
+                  "list-none outline outline-1 cursor-pointer bg-white lg:hover:bg-app-secondary px-3",
                   selectVal === i + 1 && "bg-app-primary"
                 )}
               >

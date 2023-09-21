@@ -29,7 +29,7 @@ export const QuantitiesList: FC<QuantitiesListProps> = ({
             onClick={() => onPick(prod.size)}
             className={cn(
               `w-full h-12 border-solid border-2 uppercase
-              border-app-secondary_hover hover:border-app-secondary rounded-md`,
+              border-app-secondary_hover lg:hover:border-app-secondary rounded-md`,
               pickedSize === prod.size && "bg-app-secondary"
             )}
             key={prod.id}
