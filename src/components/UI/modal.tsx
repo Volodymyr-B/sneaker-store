@@ -15,8 +15,10 @@ export const Modal: FC<PropsWithChildren<ModalProps>> = ({
   onClose,
 }) => {
   useEffect(() => {
+    window.addEventListener("popstate", onClose);
     document.body.style.overflow = "hidden";
     return () => {
+      window.removeEventListener("popstate", onClose);
       document.body.style.overflow = "unset";
     };
   }, []);
@@ -27,7 +29,7 @@ export const Modal: FC<PropsWithChildren<ModalProps>> = ({
       <motion.div
         className="bg-white absolute top-0 right-0 
           h-full overflow-y-scroll drop-shadow-lg"
-        initial={{ width: "60px" }}
+        initial={{ width: 0 }}
         animate={{ width: "auto", minWidth: "320px" }}
       >
         <Container>
