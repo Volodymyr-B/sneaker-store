@@ -44,6 +44,7 @@ export const CartCard: FC<CartCardProps> = ({
             <DiscountedPrice
               discount={product.discount}
               price={product.price * product.pickedAmount}
+              className="hidden sm:inline"
             />
           ) : (
             <p className="text-center">
