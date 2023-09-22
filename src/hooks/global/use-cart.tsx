@@ -38,12 +38,12 @@ const useCart = create<CartStore>()(
           (item) => item.amount.id === data.amount.id
         );
         if (existSize) {
-          return toast.error("That size already in cart.", {
+          return toast.error("That size already in bag.", {
             id: "unique",
           });
         }
         set({ items: [...get().items, data] });
-        toast.success("Item added to cart.", { id: "unique" });
+        toast.success("Item added to bag.", { id: "unique" });
       },
       removeItem: (sizeId: string) => {
         set({

@@ -19,7 +19,7 @@ export const UserAction = {
       if (e instanceof Prisma.PrismaClientKnownRequestError) {
         if (e.code === "P2002") {
           throw new Prisma.PrismaClientKnownRequestError(
-            "Error, new user cannot be created with this email or name",
+            "Error, this name or email is already taken",
             {
               clientVersion: e.clientVersion,
               code: e.code,
