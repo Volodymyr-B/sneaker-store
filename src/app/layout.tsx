@@ -3,6 +3,7 @@ import { Quicksand } from "next/font/google";
 import AuthProvider from "@/providers/auth-provider";
 import { ModalProvider } from "@/providers/modal-provider";
 import ToastProvider from "@/providers/toast-provider";
+import { ScrollToTopButton } from "@/components/UI/scroll-to-top-button";
 import { RootFooter } from "@/components/footers/root-footer";
 import RootHeader from "@/components/headers/root-header";
 import "@/styles/globals.css";
@@ -19,6 +20,7 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
     <html lang="en">
       <body className={font.className}>
         <AuthProvider>
+          <ScrollToTopButton />
           <ToastProvider />
           <ModalProvider />
           {/* @ts-expect-error Server Component */}
@@ -144,8 +146,10 @@ export default RootLayout;
 // check all API calls and routes for URL path, and rewrite them for deploy +++
 // check MAth.ceil and make price decimal/float or make fn for calc (go with int) +++
 // fix sport tennis async +++
+// remove next auth client provider and useSession from DetailedPage (for now no(nav-bar))
 // do i need prefetch??? (disable in categories) +++
 // framer-motion +++
+// create scrollToTop btn +++
 
 // fix adaptive paddings / modal shadow and btn padding +++
 // paypal neutral toast +++
@@ -159,6 +163,10 @@ export default RootLayout;
 // better discount in cart +++
 // remove 1 emoji from profile +++
 // check pasword security alert +++
+// fix back btn and hover in mobile devices +++
+// work in progress cart-bag +++
+// make subscribe footer +++
+// create README +++
 
 // change loading from isMutating to isSubmitting???(seems no) ---
 // React-Query and off refetch on CRUD?? (no for now) ---
@@ -166,13 +174,13 @@ export default RootLayout;
 // make exclude FN for getUserByEmail(or not?) ---
 // add scroll to select (nope) ---
 // make cart synchronized with DB or turn off persist ++-
-// remove next auth client provider and useSession from DetailedPage (for now no(nav-bar))
 // mb make some quantity check when creating order?
 // add state to searchResult or not
 // pagination
-// change disabled btn color
 // make userByEmailShort
+// memo/callback
 
 // fix small scroll and header shake
 // add comment to order form
 // add size charts(EU/ENG)
+// check mail caseinsensitivity
