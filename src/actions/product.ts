@@ -1,4 +1,6 @@
 import prisma from "@/lib/config/prisma";
+import { notFound } from "next/navigation";
+import type { ProductShort } from "@/types/dto-in";
 
 export const ProductAction = {
   // not used atm -------------//
@@ -29,74 +31,125 @@ export const ProductAction = {
     });
   },
 
-  getByParams(...args: string[]) {
+  getByParams(page: number, ...args: string[]) {
+    const take = 24;
+    const skip = page === 0 ? 0 : take * (page - 1);
     const param1 = args[0];
     const param2 = args[1] || undefined;
     const param3 = args[2] || undefined;
 
     switch (param1) {
       case "sport":
-        return prisma.product.findMany({
-          where: {
-            sport: param2 || { not: "lifestyle" },
-            type: param3,
-            quantities: { some: { quantity: { gt: 0 } } },
-          },
-          orderBy: { createdAt: "desc" },
-        });
+        const sportOptions = {
+          sport: param2 || { not: "lifestyle" },
+          type: param3,
+          quantities: { some: { quantity: { gt: 0 } } },
+        };
+        return prisma.$transaction([
+          prisma.product.count({ where: sportOptions }),
+          prisma.product.findMany({
+            take,
+            skip,
+            where: sportOptions,
+            orderBy: { createdAt: "desc" },
+          }),
+        ]);
       case "sale":
         switch (param2) {
           case "sport":
-            return prisma.product.findMany({
-              where: {
-                isSale: true,
-                sport: param3 || { not: "lifestyle" },
-                quantities: { some: { quantity: { gt: 0 } } },
-              },
-              orderBy: { createdAt: "desc" },
-            });
+            const saleSportOptions = {
+              isSale: true,
+              sport: param3 || { not: "lifestyle" },
+              quantities: { some: { quantity: { gt: 0 } } },
+            };
+            return prisma.$transaction([
+              prisma.product.count({ where: saleSportOptions }),
+              prisma.product.findMany({
+                take,
+                skip,
+                where: saleSportOptions,
+                orderBy: { createdAt: "desc" },
+              }),
+            ]);
           case undefined:
-            return prisma.product.findMany({
-              where: {
-                isSale: true,
-                quantities: { some: { quantity: { gt: 0 } } },
-              },
-              orderBy: { createdAt: "desc" },
-            });
+            const saleUndefinedOptions = {
+              isSale: true,
+              quantities: { some: { quantity: { gt: 0 } } },
+            };
+            return prisma.$transaction([
+              prisma.product.count({ where: saleUndefinedOptions }),
+              prisma.product.findMany({
+                take,
+                skip,
+                where: saleUndefinedOptions,
+                orderBy: { createdAt: "desc" },
+              }),
+            ]);
           default:
-            return prisma.product.findMany({
-              where: {
-                isSale: true,
-                gender: { has: param2 },
-                type: param3,
-                quantities: { some: { quantity: { gt: 0 } } },
-              },
-              orderBy: { createdAt: "desc" },
-            });
+            const saleDefaultOptions = {
+              isSale: true,
+              gender: { has: param2 },
+              type: param3,
+              quantities: { some: { quantity: { gt: 0 } } },
+            };
+            return prisma.$transaction([
+              prisma.product.count({ where: saleDefaultOptions }),
+              prisma.product.findMany({
+                take,
+                skip,
+                where: saleDefaultOptions,
+                orderBy: { createdAt: "desc" },
+              }),
+            ]);
         }
       default:
         switch (param2) {
           case "sport":
-            return prisma.product.findMany({
-              where: {
-                gender: { has: param1 },
-                sport: param3 || { not: "lifestyle" },
-                quantities: { some: { quantity: { gt: 0 } } },
-              },
-              orderBy: { createdAt: "desc" },
-            });
+            const mainSportOptions = {
+              gender: { has: param1 },
+              sport: param3 || { not: "lifestyle" },
+              quantities: { some: { quantity: { gt: 0 } } },
+            };
+            return prisma.$transaction([
+              prisma.product.count({ where: mainSportOptions }),
+              prisma.product.findMany({
+                take,
+                skip,
+                where: mainSportOptions,
+                orderBy: { createdAt: "desc" },
+              }),
+            ]);
           default:
-            return prisma.product.findMany({
-              where: {
-                gender: { has: param1 },
-                type: param2,
-                subType: param3,
-                quantities: { some: { quantity: { gt: 0 } } },
-              },
-              orderBy: { createdAt: "desc" },
-            });
+            const mainDefaultOptions = {
+              gender: { has: param1 },
+              type: param2,
+              subType: param3,
+              quantities: { some: { quantity: { gt: 0 } } },
+            };
+            return prisma.$transaction([
+              prisma.product.count({
+                where: mainDefaultOptions,
+              }),
+              prisma.product.findMany({
+                take,
+                skip,
+                where: mainDefaultOptions,
+                orderBy: { createdAt: "desc" },
+              }),
+            ]);
         }
     }
+  },
+
+  async getByParamsWithPagination(
+    page: number,
+    categories: string[]
+  ): Promise<[number, ProductShort[]]> {
+    const res = await fetch(
+      `http://localhost:3000/api/category/${categories.join("/")}?page=${page}`
+    );
+    if (res.status === 404) return notFound();
+    return res.json();
   },
 
   getBySearch(search: string) {
