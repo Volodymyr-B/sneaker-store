@@ -145,8 +145,9 @@ export const ProductAction = {
     page: number,
     categories: string[]
   ): Promise<[number, ProductShort[]]> {
+    const currentRoute = categories.join("/");
     const res = await fetch(
-      `http://localhost:3000/api/category/${categories.join("/")}?page=${page}`
+      `${process.env.SERVER_API_URL}/category/${currentRoute}?page=${page}`
     );
     if (res.status === 404) return notFound();
     return res.json();
