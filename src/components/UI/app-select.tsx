@@ -1,18 +1,16 @@
-import { FC, useRef, useState } from "react";
-import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
+"use client";
+
+import { FC, PropsWithChildren, useRef, useState } from "react";
 import { useClickOutside } from "@/hooks/instance/use-click-outside";
-import { cn } from "@/lib/utils/tw-merge";
+import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 
 interface AppSelectProps {
-  optionsQuantity: number;
   selectVal: number;
-  onChangeVal: (value: number) => void;
 }
 
-export const QuantitySelect: FC<AppSelectProps> = ({
-  optionsQuantity,
+export const AppSelect: FC<PropsWithChildren<AppSelectProps>> = ({
+  children,
   selectVal,
-  onChangeVal,
 }) => {
   const [isOpen, setOpen] = useState(false);
   const divRef = useRef(null);
@@ -42,19 +40,11 @@ export const QuantitySelect: FC<AppSelectProps> = ({
           )}
         </div>
         {isOpen && (
-          <ul className="z-10 absolute top-10 w-full flex flex-col gap-[1px] mt-[1px]">
-            {new Array(optionsQuantity).fill("").map((_, i) => (
-              <li
-                key={i}
-                onClick={() => onChangeVal(i + 1)}
-                className={cn(
-                  "list-none outline outline-1 cursor-pointer bg-white lg:hover:bg-app-secondary px-3",
-                  selectVal === i + 1 && "bg-app-primary"
-                )}
-              >
-                {i + 1}
-              </li>
-            ))}
+          <ul
+            className="z-10 absolute top-10 w-full flex flex-col gap-[1px] mt-[1px]
+          outline outline-1 max-h-64 overflow-y-auto no-scrollbar"
+          >
+            {children}
           </ul>
         )}
       </div>

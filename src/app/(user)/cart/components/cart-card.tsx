@@ -2,7 +2,8 @@ import { FC, useState } from "react";
 import Link from "next/link";
 import { TfiTrash } from "react-icons/tfi";
 import { AppIcon } from "@/components/UI/app-icon";
-import { QuantitySelect } from "@/components/UI/quantity-select";
+import { SelectItem } from "@/components/UI/select-item";
+import { AppSelect } from "@/components/UI/app-select";
 import { DiscountedPrice } from "@/components/common/discounted-price";
 import { AppImage } from "@/components/common/app-image";
 import type { CartProduct } from "@/types/cart";
@@ -58,11 +59,16 @@ export const CartCard: FC<CartCardProps> = ({
             Picked size:
             <span className="uppercase"> {product.amount.size}</span>
           </p>
-          <QuantitySelect
-            onChangeVal={onChangeAmount}
-            optionsQuantity={product.amount.quantity}
-            selectVal={selectVal}
-          />
+          <AppSelect selectVal={selectVal}>
+            {new Array(product.amount.quantity).fill("").map((_, i) => (
+              <SelectItem
+                key={i}
+                onClick={() => onChangeAmount(i + 1)}
+                selected={selectVal === i + 1}
+                value={i + 1}
+              />
+            ))}
+          </AppSelect>
         </div>
         <AppIcon icon={<TfiTrash />} action={() => remove(product.amount.id)} />
       </div>
