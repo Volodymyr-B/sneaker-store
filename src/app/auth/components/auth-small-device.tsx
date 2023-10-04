@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { SignInForm } from "@/app/auth/components/sign-in-form";
 import { SignUpForm } from "@/app/auth/components/sign-up-form";
 
@@ -32,7 +32,13 @@ export const AuthSmallDevice = () => {
           <h5>sign-up</h5>
         </button>
       </div>
-      {visible ? <SignUpForm /> : <SignInForm />}
+      {visible ? (
+        <SignUpForm />
+      ) : (
+        <Suspense fallback={<div>loading...</div>}>
+          <SignInForm />
+        </Suspense>
+      )}
     </div>
   );
 };

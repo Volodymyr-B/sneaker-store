@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { Metadata } from "next";
 import { AuthSmallDevice } from "@/app/auth/components/auth-small-device";
 import { SignInForm } from "@/app/auth/components/sign-in-form";
@@ -16,7 +17,9 @@ const AuthPage = () => {
       <h2 className="p-5 text-center bg-app-primary_action">Authentication</h2>
       <Container>
         <div className="hidden md:flex justify-center gap-16">
-          <SignInForm />
+          <Suspense fallback={<div>loading...</div>}>
+            <SignInForm />
+          </Suspense>
           <Separator vertical />
           <SignUpForm />
         </div>
