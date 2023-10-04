@@ -21,6 +21,7 @@ export const Modal: FC<PropsWithChildren<ModalProps>> = ({
       window.removeEventListener("popstate", onClose);
       document.body.style.overflow = "unset";
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
