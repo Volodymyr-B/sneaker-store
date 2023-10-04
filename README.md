@@ -16,6 +16,7 @@ User features:
 - Registered users have the opportunity to monitor all their purchases on their profile page
 - Also registered users can leave comments on the product and this will also be displayed in their personal account
 - Implemented live search for products by name
+- Implemented pagination for better user expirience
 - Adaptation for all screen sizes
 
 Application features:
@@ -31,6 +32,7 @@ Application features:
   - on the server
   - in the database
 - Delayed action implemented for the main navigation to reduce unnecessary renderings and improve user experience
+- Server side pagination
 - Form control via react-hook-form and zod
 - Metadata for improved SEO and web shareability
 - Image optimization via Next Image component
