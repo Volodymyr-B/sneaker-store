@@ -1,24 +1,23 @@
 import { ProductAction } from "@/actions/product";
-import { CategoryAction } from "@/actions/category";
-import { generateStaticNav } from "@/lib/utils/generate-static-nav";
+import { toValidNumber } from "@/lib/utils/to-valid-number";
 import { Breadcrumbs } from "@/app/[...category]/components/breadcrumbs";
 import { ProductCard } from "@/app/[...category]/components/product-card";
+import { Pagination } from "@/components/common/pagination";
 import { Container } from "@/components/common/container";
 
 interface Params {
+  searchParams: { [key: string]: string | string[] | undefined };
   params: { category: string[] };
 }
 
 export const revalidate = 86400;
-export const dynamicParams = false;
 
-export const generateStaticParams = async () => {
-  const categories = await CategoryAction.getAll();
-  return generateStaticNav(categories);
-};
+const CategoryPage = async ({ searchParams, params: { category } }: Params) => {
+  const currentPage = toValidNumber(searchParams["page"]);
+  const [totalProductsInCategory, products] =
+    await ProductAction.getByParamsWithPagination(currentPage, category);
 
-const CategoryPage = async ({ params: { category } }: Params) => {
-  const products = await ProductAction.getByParams(...category);
+  const totalPages = Math.ceil(totalProductsInCategory / 24);
 
   return (
     <section>
@@ -38,6 +37,13 @@ const CategoryPage = async ({ params: { category } }: Params) => {
           </div>
         ) : (
           <div>nothing</div>
+        )}
+        {totalPages > 1 && currentPage <= totalPages && (
+          <Pagination
+            path={category.join("/")}
+            currentPage={currentPage}
+            totalPages={totalPages}
+          />
         )}
       </Container>
     </section>

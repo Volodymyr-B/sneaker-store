@@ -8,6 +8,8 @@ import { CategoryBar } from "@/components/root-header/category-bar/category-bar"
 import { CategoryBarMobile } from "@/components/root-header/category-bar/category-bar-mobile";
 import { ModalButton } from "@/components/UI/modal-button";
 
+export const revalidate = 86400;
+
 const RootHeader = async () => {
   const categories = await CategoryAction.getAll();
 
