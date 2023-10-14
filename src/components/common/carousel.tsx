@@ -35,7 +35,7 @@ export const Carousel: FC<CarouselProps> = ({ list }) => {
         >
           {list.map((product) => (
             <SwiperSlide
-              className="hover:bg-gray-200 hover:shadow-lg rounded-lg p-4"
+              className="hover:bg-gray-200 hover:shadow-sm rounded-lg p-4"
               key={product.id}
             >
               <Link href={`/shop/${product.id}`}>

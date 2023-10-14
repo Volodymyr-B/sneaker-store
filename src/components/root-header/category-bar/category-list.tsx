@@ -23,7 +23,7 @@ export const CategoryList: FC<CategoryListProps> = ({ link, content }) => {
         prefetch={false}
         href={`/${link}`}
         onClick={closeHandler}
-        className="flex items-center relative h-main_header px-4"
+        className="flex items-center relative h-main_header px-4 text-lg"
       >
         {link}
         {isOpen && (
