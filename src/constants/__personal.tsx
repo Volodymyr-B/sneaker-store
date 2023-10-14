@@ -312,6 +312,9 @@ export const nothing = null;
 // framer-motion +++
 // create scrollToTop btn +++
 // pagination +++
+// cache behavior for searchParams and fail to loadscreens 0_o +++
+// (Page navigation & caching with searchParams is broken) fixed +++
+// (Add searchParams to leaf cache key ) nope (key to suspense) ---
 
 // fix adaptive paddings / modal shadow and btn padding +++
 // paypal neutral toast +++

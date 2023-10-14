@@ -20,6 +20,7 @@ export const SelectLinkItem: FC<PropsWithChildren<SelectLinkItemProps>> = ({
       )}
     >
       <Link
+        prefetch={false}
         className={cn(
           "w-full px-3",
           isDisabled && "pointer-events-none text-app-primary_action"
