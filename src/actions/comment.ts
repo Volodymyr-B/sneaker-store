@@ -1,3 +1,4 @@
+import { revalidatePath } from "next/cache";
 import { Prisma } from "@prisma/client";
 import prisma from "@/lib/config/prisma";
 import type { CommentValues } from "@/types/dto-out";
@@ -8,6 +9,7 @@ export const CommentAction = {
       const comment = await prisma.comment.create({
         data: options,
       });
+      revalidatePath(`/shop/${options.productId}`); // ???? -_-
       return comment;
     } catch (e) {
       if (e instanceof Prisma.PrismaClientKnownRequestError) {
